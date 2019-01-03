@@ -263,4 +263,9 @@ public class Picture extends SimplePicture
     beach.explore();
   }
   
+  public void keepOnlyBlue()
+  {
+	  
+  }
+  
 } // this } is the end of class Picture, put all new methods before this

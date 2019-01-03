@@ -12,10 +12,24 @@ public class IntArrayWorker
     matrix = theMatrix;
   }
   
-  /**
-   * Method to return the total 
-   * @return the total of the values in the array
-   */
+  public int getCount(int findThisNumber)
+  {
+	  int count = 0;
+	  
+	  for (int [] row : matrix)
+	  {
+		  for (int item : row)
+		  {
+			  if (item == findThisNumber)
+			  {
+				  count++;
+			  }
+		  }
+	  }
+	  
+	  return count;
+  }
+  
   public int getTotal()
   {
     int total = 0;

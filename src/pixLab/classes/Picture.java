@@ -137,16 +137,16 @@ public class Picture extends SimplePicture
   public void mirrorHorizontal()
   {
 	    Pixel[][] pixels = this.getPixels2D();
-	    Pixel leftPixel = null;
-	    Pixel rightPixel = null;
-	    int width = pixels.length;
+	    Pixel topPixel = null;
+	    Pixel bottomPixel = null;
+	    int width = pixels[0].length;
 	    for (int row = 0; row < pixels.length; row++)
 	    {
 	      for (int col = 0; col < width / 2; col++)
 	      {
-	        leftPixel = pixels[row][col];
-	        rightPixel = pixels[row][width - 1 - col];
-	        rightPixel.setColor(leftPixel.getColor());
+	        topPixel = pixels[row][col];
+	        bottomPixel = pixels[row][width - 1 - col];
+	        bottomPixel.setColor(bottomPixel.getColor());
 	      
 	 }
    }
@@ -255,17 +255,67 @@ public class Picture extends SimplePicture
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
+  public void chromaKey(Picture replacement, Color changeColor)
+  {
+	  Pixel [][] mainPixels = this.getPixels2D();
+	  Pixel [][] replacementPixels = replacement.getPixels2D();
+	  
+	  for (int row = 0; row < mainPixels.length; row++)
+	  {
+		  for (int col = 0; col < mainPixels[0].length; col++)
+		  {
+			  if (mainPixels[row][col].colorDistance(changeColor) < 100)
+			  {
+				  mainPixels[row][col].setColor(replacementPixels[row][col].getColor());
+			  }
+		  }
+	  }
+  }
+  
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.mirrorHorizontal();
+    seagull.explore();
+ 
   }
   
   public void keepOnlyBlue()
   {
-	  
+	  Pixel[][] pixels = this.getPixels2D();
+	  for (Pixel[] rowArray : pixels)
+	  {
+		  for (Pixel pixelObj : rowArray)
+		  {
+			  pixelObj.setBlue(0);
+		  }
+	  }
   }
   
+ public Color randomColor()
+ {
+	 Color random;
+	 int red = (int) (Math.random() * 256);
+	 int green = (int) (Math.random() * 256);
+	 int blue = (int) (Math.random() * 256);
+	 
+	 random = new Color(red, green, blue);
+	 
+	 return random;
+ }
+  
+ public void randomize(int startRow, int startCol, int endRow, int endCol)
+ {
+	 Pixel[][] pixels = this.getPixels2D();
+	 
+	 for (int row = startRow; row < endRow; row++)
+	 {
+		 for (int col = startCol; col < endCol; col++)
+		 {
+			 int randomNumber = (int) (Math.random() * 10);
+			 
+		 }
+	 }
+ }
 } // this } is the end of class Picture, put all new methods before this

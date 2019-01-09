@@ -12,6 +12,34 @@ public class IntArrayWorker
     matrix = theMatrix;
   }
   
+  public int GetColTotal()
+  {
+	  int total = 0;
+	  for(int cols = 0; cols < matrix[0].length; cols++)
+	  {
+		  
+	  }
+	  return matrix[0].length;
+  }
+  
+  public int getLargest()
+  {
+	  int largest = Integer.MIN_VALUE;
+	  
+	  for (int col = 0; col < matrix[0].length; col++)
+	  {
+		  for (int row = 0; row < matrix.length; row++)
+		  {
+			  if (matrix[row][col] > largest)
+			  {
+				  largest = matrix[row][col];
+			  }
+		  }
+	  }
+	  
+	  return largest;
+  }
+  
   public int getCount(int findThisNumber)
   {
 	  int count = 0;

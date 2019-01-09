@@ -1,4 +1,5 @@
 package pixLab.classes;
+import java.awt.Color;
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -52,6 +53,16 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testChromakey()
+  {
+	  Picture source = new Picture("background.jpg");
+      Picture background = new Picture("beetlejuice.jpg");
+      source.explore();
+	  background.explore();
+	  source.chromaKey(background, new Color(215, 200, 212));
+	  source.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -60,7 +71,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
-    testKeepOnlyBlue();
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
@@ -75,7 +86,7 @@ public class PictureTester
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
-    //testChromakey();
+    testChromakey();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();

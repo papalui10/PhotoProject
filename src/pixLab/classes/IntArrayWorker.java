@@ -58,7 +58,7 @@ public class IntArrayWorker
 	  return count;
   }
   
-  public int getTotal()
+  public int getColTotal()
   {
     int total = 0;
     for (int row = 0; row < matrix.length; row++)

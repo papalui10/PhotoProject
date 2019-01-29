@@ -19,10 +19,25 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testLeftRight()
+  {
+	  Picture nuggets = new Picture("koala.jpg");
+	  nuggets.explore();
+	  nuggets.shiftLeftRight(300);
+	  nuggets.explore();
+  }
+  
+  public static void testUpDown()
+  {
+	  Picture nuggets = new Picture("koala.jpg");
+	  nuggets.explore();
+	  nuggets.shiftUpDown(-300);
+	  nuggets.explore();
+  }
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
+    Picture caterpillar = new Picture("koala.jpg");
     caterpillar.explore();
     caterpillar.mirrorVertical();
     caterpillar.explore();
@@ -48,9 +63,17 @@ public class PictureTester
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
-    Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
-    swan.explore();
+    Picture nuggets = new Picture("koala.jpg");
+    nuggets.edgeDetection(10);
+    nuggets.explore();
+  }
+  
+  public static void testZeroRed()
+  {
+	  Picture nuggets = new Picture("koala.jpg");
+	  nuggets.explore();
+	  nuggets.zeroRed();
+	  nuggets.explore();
   }
   
   public static void testChromakey()
@@ -63,6 +86,29 @@ public class PictureTester
 	  source.explore();
   }
   
+  public static void testSteganography()
+  {
+	  Picture source = new Picture("ada.jpg");
+	  
+	  Picture message = new Picture("hide.jpg");
+	  source.explore();
+	  message.explore();
+	  source.hidePicture(message);
+	  source.explore();
+	  source.revealPicture();
+	  source.explore();
+  }
+  
+  public static void testGlitchIt()
+  {
+	  Picture source = new Picture("beach.jpg");
+	  source.explore();
+	  source.glitchIt(0, source, 0, 0);
+	  source.explore();
+	  
+	  
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -70,14 +116,14 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-    testMirrorVertical();
+    //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
@@ -86,11 +132,16 @@ public class PictureTester
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
-    testChromakey();
+    //testChromakey();
+    //testLeftRight();
+    //testUpDown();
     //testEncodeAndDecode();
     //testGetCountRedOverValue(250);
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
+    //testZeroRed();
+	  
+	testGlitchIt(); 
   }
 }
